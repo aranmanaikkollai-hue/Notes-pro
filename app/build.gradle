@@ -13,13 +13,17 @@ android {
         targetSdk 34
     }
 
+    buildFeatures {
+        viewBinding true   // ✅ VERY IMPORTANT
+    }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17   // ✅ FIX
-        targetCompatibility JavaVersion.VERSION_17   // ✅ FIX
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "17"   // ✅ FIX
+        jvmTarget = "17"
     }
 }
 kotlin {
