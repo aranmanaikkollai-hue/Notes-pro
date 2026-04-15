@@ -24,3 +24,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+val dummyList = listOf("First Note", "Second Note", "Third Note")
+
+binding.recyclerView.layoutManager = LinearLayoutManager(this)
+binding.recyclerView.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val tv = TextView(parent.context)
+        tv.setPadding(40, 40, 40, 40)
+        return object : RecyclerView.ViewHolder(tv) {}
+    }
+
+    override fun getItemCount() = dummyList.size
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder.itemView as TextView).text = dummyList[position]
+    }
+}
