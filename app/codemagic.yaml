@@ -1,0 +1,33 @@
+workflows:
+  android-workflow:
+    name: Android Build
+    max_build_duration: 60
+
+    environment:
+      vars:
+        PACKAGE_NAME: "com.notespro"
+      java: 17
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+
+    scripts:
+      - name: Set up Gradle
+        script: |
+          chmod +x ./gradlew
+
+      - name: Build Debug APK
+        script: |
+          ./gradlew assembleDebug
+
+    artifacts:
+      - app/build/outputs/**/*.apk
+
+    publishing:
+      email:
+        recipients:
+          - aranmanaikkollai@gmail.com
