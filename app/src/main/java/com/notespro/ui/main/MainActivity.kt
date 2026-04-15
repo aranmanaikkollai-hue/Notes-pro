@@ -19,9 +19,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Dummy data
-        val dummyList = listOf("First Note", "Second Note", "Third Note")
+    private lateinit var viewModel: NoteViewModel
+        viewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
+val adapter = NotesAdapter()
+binding.recyclerView.layoutManager = LinearLayoutManager(this)
+binding.recyclerView.adapter = adapter
+
+viewModel.notes.observe(this) { notes ->
+    adapter.submitList(notes)
+}
+        
         // RecyclerView setup
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
