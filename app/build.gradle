@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'   // ✅ ADD THIS
+    id 'org.jetbrains.kotlin.android' version '1.9.22'
+    id 'kotlin-kapt'
 }
 
 android {
